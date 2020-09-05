@@ -5,4 +5,4 @@ import Hello from './screens/Hello'
 import Img from './screens/Img'
 import Request from './screens/Request'
 
-registerRootComponent(Request);
+registerRootComponent(App);

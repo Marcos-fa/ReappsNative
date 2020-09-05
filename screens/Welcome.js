@@ -1,16 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import {DrawerNavigator} from "./navigation/DrawerNavigator";
 
-export default function App() {
+export default function HomeScreen() {
   return (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
+    <View style={styles.container}>
+      <Image style={styles.image} source={require('../images/Welcome.jpg')} />
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
