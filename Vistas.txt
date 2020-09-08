@@ -1,0 +1,4 @@
+Toma de fotos   *
+Mapas
+Cartelera       *
+Formulario

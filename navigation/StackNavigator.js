@@ -7,6 +7,8 @@ const Drawer = createDrawerNavigator();
 import Hello from '../screens/Hello';
 import Request from '../screens/Request';
 import HomeScreen from '../screens/Welcome';
+import Fotos from '../screens/Fotos';
+import Cartelera from '../screens/Cartelera';
 
 import { bugerMenu } from './DrawerNavigator';
 
@@ -30,7 +32,7 @@ const MainStackNavigator = () => {
 const hello = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
-            <Stack.Screen name='Hello' component={Hello} 
+            <Stack.Screen name='Hello' component={Hello}
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -46,7 +48,7 @@ const request = () => {
     return (
         <Stack.Navigator
             screenOptions={screenOptionStyle}>
-            <Stack.Screen name='Request' component={Request} 
+            <Stack.Screen name='Request' component={Request}
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -58,19 +60,49 @@ const request = () => {
     );
 }
 
-export { MainStackNavigator, hello, request };
+const fotos = () => {
+    return (
+        <Stack.Navigator
+            screenOptions={screenOptionStyle}>
+            <Stack.Screen name='Fotos' component={Fotos}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                            <Text>Menu</Text>
+                        </TouchableOpacity>,
+                })}
+            />
+        </Stack.Navigator>
+    );
+}
+
+const cartelera = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle} >
+            <Stack.Screen name='Cartelera' component={Cartelera}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><Text>Menu</Text></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+export { MainStackNavigator, hello, request, fotos, cartelera };
 
 const screenOptionStyle = {
-    headerTitleStyle:{
-        alignSelf:'center',
-    },    
+    headerTitleStyle: {
+        alignSelf: 'center',
+    },
     titleStyle: {
-      },
+    },
     headerStyle: {
         backgroundColor: "#9AC4F8",
     },
     headerTintColor: "white",
     headerBackTitle: "Back",
     headerLeftContainerStyle: { paddingLeft: 10 },
-    headerRight: () => <Text style={{color:'#9AC4F8'}} >N</Text>
+    headerRight: () => <Text style={{ color: '#9AC4F8' }} >N</Text>
 };
