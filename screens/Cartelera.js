@@ -108,8 +108,7 @@ export default function Cartelera() {
     return (
         <Transitioning.View
             ref={ref}
-            transition={transition}
-            style={styles.container}>
+            transition={transition}>
             {isLoading ? <ActivityIndicator /> : (
                 <FlatList
                     data={DATA}
@@ -126,8 +125,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
+        paddingTop:10,
     },
     cardContainer:{
+        marginHorizontal:10,
         flexGrow:1
     },
     card: {
@@ -164,7 +165,8 @@ const styles = StyleSheet.create({
         borderColor: '#9AC4F8'
     },
     cardButton: {
-        paddingTop: 10,
+        paddingTop: 5,
+        paddingBottom:10,
     },
     button: {
         alignSelf: 'center',
