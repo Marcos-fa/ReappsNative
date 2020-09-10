@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, TouchableOpacity, Text, FontAwesome5 } from 'react-native';
+import { Button, TouchableOpacity, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {FontAwesome5} from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
 
 import Hello from '../screens/Hello';
@@ -9,6 +10,7 @@ import Request from '../screens/Request';
 import HomeScreen from '../screens/Welcome';
 import Fotos from '../screens/Fotos';
 import Cartelera from '../screens/Cartelera';
+import Headphones from '../screens/Headphones'
 
 import { bugerMenu } from './DrawerNavigator';
 
@@ -21,7 +23,7 @@ const MainStackNavigator = () => {
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <Text>Menu</Text>
+                            <FontAwesome5 name='bars' size={24} color="#161924" />
                         </TouchableOpacity>,
                 })}
             />
@@ -36,7 +38,7 @@ const hello = () => {
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <Text>Menu</Text>
+                            <FontAwesome5 name='bars' size={24} color="#161924" />
                         </TouchableOpacity>,
                 })}
             />
@@ -52,7 +54,7 @@ const request = () => {
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <Text>Menu</Text>
+                            <FontAwesome5 name='bars' size={24} color="#161924" />
                         </TouchableOpacity>,
                 })}
             />
@@ -68,7 +70,7 @@ const fotos = () => {
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <Text>Menu</Text>
+                            <FontAwesome5 name='bars' size={24} color="#161924" />
                         </TouchableOpacity>,
                 })}
             />
@@ -82,7 +84,7 @@ const cartelera = () => {
             <Stack.Screen name='Cartelera' component={Cartelera}
             options={({navigation}) => ({
                 headerLeft:() =>
-                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><Text>Menu</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
             })} />
 
 
@@ -90,7 +92,21 @@ const cartelera = () => {
     );
 }
 
-export { MainStackNavigator, hello, request, fotos, cartelera };
+const headphones = () => {
+    return (
+        <Stack.Navigator screenOptions={{headerShown:false}} >
+            <Stack.Screen name='Headphones' component={Headphones}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+export { MainStackNavigator, hello, request, fotos, cartelera, headphones, };
 
 const screenOptionStyle = {
     headerTitleStyle: {
