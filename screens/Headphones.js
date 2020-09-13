@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Animated, View, Text, StyleSheet, FlatList, ActivityIndicator, Image, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { Animated, StatusBar, View, Text, StyleSheet, FlatList, ActivityIndicator, Image, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
 import data from '../datos/dataStore';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import {FontAwesome5} from '@expo/vector-icons';
@@ -33,6 +33,7 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
 
     return (
         <View style={styles.itemStyle} >
+            <StatusBar style='auto' hidden />
             <Animated.Image
                 source={imageUri}
                 style={[
@@ -112,7 +113,7 @@ const Circle = ({scrollX}) => {
 }
 
 export default function Headphone() {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const [isLoading, setLoading] = useState(true);
     const [currentId, setCurrentId] = useState(null);
     const scrollX = React.useRef(new Animated.Value(0)).current;

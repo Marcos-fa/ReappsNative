@@ -3,16 +3,15 @@ import { Button, TouchableOpacity, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {FontAwesome5} from '@expo/vector-icons';
-const Drawer = createDrawerNavigator();
 
 import Hello from '../screens/Hello';
 import Request from '../screens/Request';
 import HomeScreen from '../screens/Welcome';
 import Fotos from '../screens/Fotos';
 import Cartelera from '../screens/Cartelera';
-import Headphones from '../screens/Headphones'
+import Headphones from '../screens/Headphones';
+import Movies from '../screens/Movies';
 
-import { bugerMenu } from './DrawerNavigator';
 
 const Stack = createStackNavigator();
 
@@ -106,7 +105,21 @@ const headphones = () => {
     );
 }
 
-export { MainStackNavigator, hello, request, fotos, cartelera, headphones, };
+const movies = () => {
+    return (
+        <Stack.Navigator screenOptions={{headerShown:false}} >
+            <Stack.Screen name='Movies' component={Movies}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+export { MainStackNavigator, hello, request, fotos, cartelera, headphones, movies, };
 
 const screenOptionStyle = {
     headerTitleStyle: {
