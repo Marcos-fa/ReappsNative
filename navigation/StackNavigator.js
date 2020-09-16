@@ -3,26 +3,27 @@ import { Button, TouchableOpacity, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {FontAwesome5} from '@expo/vector-icons';
-
-import Hello from '../screens/Hello';
-import Request from '../screens/Request';
+// import Hello from '../screens/Hello';
+import Request_ImgPicker from '../screens/Request_ImgPicker';
 import HomeScreen from '../screens/Welcome';
-import Fotos from '../screens/Fotos';
+// import Fotos from '../screens/Fotos';
 import Cartelera from '../screens/Cartelera';
 import Headphones from '../screens/Headphones';
 import Movies from '../screens/Movies';
+import Socials from '../screens/Socials';
+import Directorio from '../screens/Directorio';
 
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={screenOptionStyle}>
+        <Stack.Navigator screenOptions={HomeHeaderStyle}>
             <Stack.Screen name='Home' component={HomeScreen}
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <FontAwesome5 name='bars' size={24} color="#161924" />
+                            <FontAwesome5 name='bars' size={24} color="white" />
                         </TouchableOpacity>,
                 })}
             />
@@ -30,42 +31,11 @@ const MainStackNavigator = () => {
     );
 }
 
-const hello = () => {
-    return (
-        <Stack.Navigator screenOptions={screenOptionStyle}>
-            <Stack.Screen name='Hello' component={Hello}
-                options={({ navigation }) => ({
-                    headerLeft: () =>
-                        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <FontAwesome5 name='bars' size={24} color="#161924" />
-                        </TouchableOpacity>,
-                })}
-            />
-        </Stack.Navigator>
-    );
-}
-
-const request = () => {
+const request_ImgPicker = () => {
     return (
         <Stack.Navigator
             screenOptions={screenOptionStyle}>
-            <Stack.Screen name='Request' component={Request}
-                options={({ navigation }) => ({
-                    headerLeft: () =>
-                        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                            <FontAwesome5 name='bars' size={24} color="#161924" />
-                        </TouchableOpacity>,
-                })}
-            />
-        </Stack.Navigator>
-    );
-}
-
-const fotos = () => {
-    return (
-        <Stack.Navigator
-            screenOptions={screenOptionStyle}>
-            <Stack.Screen name='Fotos' component={Fotos}
+            <Stack.Screen name='Request y ImgPicker' component={Request_ImgPicker}
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -83,7 +53,7 @@ const cartelera = () => {
             <Stack.Screen name='Cartelera' component={Cartelera}
             options={({navigation}) => ({
                 headerLeft:() =>
-                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#49B1E9" /></TouchableOpacity>
             })} />
 
 
@@ -119,7 +89,35 @@ const movies = () => {
     );
 }
 
-export { MainStackNavigator, hello, request, fotos, cartelera, headphones, movies, };
+const socials = () => {
+    return (
+        <Stack.Navigator screenOptions={{headerShown:false}} >
+            <Stack.Screen name='Socials' component={Socials}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+const directorio = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle} >
+            <Stack.Screen name='Directorio' component={Directorio}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, };
 
 const screenOptionStyle = {
     headerTitleStyle: {
@@ -128,10 +126,25 @@ const screenOptionStyle = {
     titleStyle: {
     },
     headerStyle: {
-        backgroundColor: "#9AC4F8",
+        backgroundColor: "#fff",
+    },
+    headerTintColor: "black",
+    headerBackTitle: "Back",
+    headerLeftContainerStyle: { paddingLeft: 10 },
+    headerRight: () => <Text style={{ color: '#9AC4F8' }} > </Text>
+};
+
+const HomeHeaderStyle = {
+    headerTitleStyle: {
+        alignSelf: 'center',
+    },
+    titleStyle: {
+    },
+    headerStyle: {
+        backgroundColor: "#984B3B",
     },
     headerTintColor: "white",
     headerBackTitle: "Back",
     headerLeftContainerStyle: { paddingLeft: 10 },
-    headerRight: () => <Text style={{ color: '#9AC4F8' }} >N</Text>
+    headerRight: () => <Text style={{ color: '#9AC4F8' }} > </Text>
 };

@@ -10,11 +10,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import Svg, { Rect } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Extrapolate } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window');
 
 const SPACING = 10;
-const ITEM_SIZE = width * 0.72;
+const ITEM_SIZE = Platform.IS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const BACKDROP_HEIGHT = height * 0.65;
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
@@ -25,54 +26,53 @@ const Loading = () => (
     </View>
 );
 
-const Backdrop = ({movies, scrollX}) => {
-    return <View style={{ height: BACKDROP_HEIGHT, width, position: 'absolute' }}>
-          <FlatList
-            data={movies}
+const Backdrop = ({ movies, scrollX }) => {
+    return <View style={{ height: height * 0.65, width, position: 'absolute' }}>
+        <FlatList
+            data={movies.reverse()}
             keyExtractor={(item) => item.key + '-backdrop'}
             removeClippedSubviews={false}
-            contentContainerStyle={{width, height: BACKDROP_HEIGHT}}
+            contentContainerStyle={{ width, height: BACKDROP_HEIGHT }}
             renderItem={({ item, index }) => {
-              if (!item.backdrop) {
-                return null;
-              }
-              const translateX = scrollX.interpolate({
-                inputRange: [(index - 2) * ITEM_SIZE, (index - 1) * ITEM_SIZE],
-                outputRange: [0, width],
-                // extrapolate:'clamp'
-              });
-              return (
-                <Animated.View
-                  removeClippedSubviews={false}
-                  style={{position: 'absolute', width: translateX, height, overflow: 'hidden'}}
-                >
-                <Image
-                  source={{ uri: item.backdrop }}
-                  style={{
-                    width,
-                    height: BACKDROP_HEIGHT,
-                    position: 'absolute'
-                  }}
-                />
-                </Animated.View>
-              );
+                if (!item.backdrop) {
+                    return null;
+                }
+                const translateX = scrollX.interpolate({
+                    inputRange: [(index - 2) * ITEM_SIZE, (index - 1) * ITEM_SIZE],
+                    outputRange: [0, width],
+                    // extrapolate:'clamp'
+                });
+                return (
+                    <Animated.View
+                        removeClippedSubviews={false}
+                        style={{ position: 'absolute', width: translateX, height, overflow: 'hidden' }}
+                    >
+                        <Image
+                            source={{ uri: item.backdrop }}
+                            style={{
+                                width,
+                                height: BACKDROP_HEIGHT,
+                                position: 'absolute'
+                            }}
+                        />
+                    </Animated.View>
+                );
             }}
-          />
-          <LinearGradient
+        />
+        <LinearGradient
             colors={['rgba(0, 0, 0, 0)', 'white']}
             style={{
-              height: BACKDROP_HEIGHT,
-              width,
-              position: 'absolute',
-              bottom: 0,
+                height: BACKDROP_HEIGHT,
+                width,
+                position: 'absolute',
+                bottom: 0,
             }}
-          />
-        </View>
-  }
+        />
+    </View>
+}
 
 export default function Movies() {
     const navigation = useNavigation();
-
     const [movies, setMovies] = React.useState([]);
     const scrollX = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -105,13 +105,16 @@ export default function Movies() {
                 renderToHardwareTextureAndroid
                 bounces={false}
                 data={movies}
-                keyExtractor={(item) => item.key}
-                scrollEventThrottle={16}
+                keyExtractor={(item) => item.key.toString()}
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { x: scrollX } } }],
                     { useNativeDriver: false }
                 )}
+                scrollEventThrottle={16}
                 renderItem={({ item, index }) => {
+                    if (!item.poster) {
+                        return <View style={{ width: EMPTY_ITEM_SIZE }} />;
+                    }
                     const inputRange = [
                         (index - 2) * ITEM_SIZE,
                         (index - 1) * ITEM_SIZE,
@@ -119,12 +122,9 @@ export default function Movies() {
                     ];
                     const translateY = scrollX.interpolate({
                         inputRange,
-                        outputRange: [100, 50, 100]
+                        outputRange: [100, 50, 100],
+                        extrapolate: 'clamp',
                     });
-
-                    if (!item.poster) {
-                        return <View style={{ width: EMPTY_ITEM_SIZE }} />;
-                    }
 
                     return (
                         <View style={{ width: ITEM_SIZE }} >
@@ -138,6 +138,7 @@ export default function Movies() {
                             }} >
                                 <Image
                                     source={{ uri: item.poster }}
+                                    {...console.log(item.poster)}
                                     style={styles.posterImage}
                                 />
                                 <Text style={{ fontSize: 24 }} numberOfLines={1}>{item.title}</Text>
@@ -160,6 +161,7 @@ export default function Movies() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:'white',
     },
     loadingContainer: {
         flex: 1,

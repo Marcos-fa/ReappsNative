@@ -12,28 +12,10 @@ export default class Fotos extends React.Component {
     state = {
         image: null,
     };
-
-    // OpenImagePicker = () => {
-    //     ImagePicker.openPicker({
-    //         multiple: true,
-    //         waitAnimationEnd: false,
-    //         includeExif: true,
-    //         forceJpg: true,
-    //         maxFiles: 5,
-    //         compressImageQuality: 0.8,
-    //         mediaType:'photo'
-    //     }).then(images => {
-    //         images.map((item, index) => {
-    //             console.log(JSON.stringify(item));
-    //         })
-    //     });
-    // }
-
     render() {
         let { image } = this.state;
         return (
             <View style={styles.container}>
-                <Text>Hello Wolrd!</Text>
                 <Button title='Pick an image from camera roll' onPress={this._pickImage} />
                 { image && <Image source={{uri: image }} style={{ width:200, height:200 }} /> }
                 {/* <Button title='Image Picker' onPress={() => this.OpenImagePicker()} /> */}

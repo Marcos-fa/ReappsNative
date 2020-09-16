@@ -152,17 +152,17 @@ const styles = StyleSheet.create({
     },
     cardImageBackground: {
         width: 100,
-        height: 100,
-        borderRadius: 160,
+        height: 120,
+        borderRadius: 20,
         alignSelf: 'center',
     },
     cardImage: {
         width: 100,
-        height: 100,
-        borderRadius: 160,
+        height: 120,
+        borderRadius: 20,
         alignSelf: 'center',
         borderWidth: 2,
-        borderColor: '#9AC4F8'
+        borderColor: '#49B1E9'
     },
     cardButton: {
         paddingTop: 5,
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: '60%',
         padding: 8,
-        backgroundColor: '#9AC4F8',
+        backgroundColor: '#49B1E9',
         borderRadius: 10,
         color: 'white',
         fontWeight: 'bold',
