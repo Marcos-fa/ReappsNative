@@ -12,6 +12,7 @@ import Headphones from '../screens/Headphones';
 import Movies from '../screens/Movies';
 import Socials from '../screens/Socials';
 import Directorio from '../screens/Directorio';
+import Maps from '../screens/Maps';
 
 
 const Stack = createStackNavigator();
@@ -117,7 +118,21 @@ const directorio = () => {
     );
 }
 
-export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, };
+const maps = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle} >
+            <Stack.Screen name='Maps' component={Maps}
+            options={({navigation}) => ({
+                headerLeft:() =>
+                <TouchableOpacity onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            })} />
+
+
+        </Stack.Navigator>
+    );
+}
+
+export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps };
 
 const screenOptionStyle = {
     headerTitleStyle: {
