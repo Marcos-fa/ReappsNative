@@ -17,7 +17,7 @@ const GooglePlacesInput = (props) => {
         language: 'es',
       }}
       //onFail={error => console.error(error)}
-      onFail={error => alert("Es necesario api activar Api Key")}
+      onFail={error => alert("Es necesario activar Api Key")}
     />
   );
 };
