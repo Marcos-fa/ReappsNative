@@ -59,10 +59,10 @@ export default function Directorio() {
                             <TouchableOpacity style={styles.cardButtons} onPress={() => Linking.openURL(item.fblink)} >
                                 <Text style={styles.CompanyButton}> {item.facebook} </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.cardButtons} onPress={() => makeCall(item.twlink)} >
+                            <TouchableOpacity style={styles.cardButtons} onPress={() => Linking.openURL(item.twlink)} >
                                 <Text style={styles.CompanyButton}>{item.twitter} </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.cardButtons} onPress={() => makeCall(item.inlink)} >
+                            <TouchableOpacity style={styles.cardButtons} onPress={() => Linking.openURL(item.inlink)} >
                                 <Text style={styles.CompanyButton}>{item.instagram} </Text>
                             </TouchableOpacity>
                         </View>

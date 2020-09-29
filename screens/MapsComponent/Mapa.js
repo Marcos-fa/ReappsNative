@@ -1,19 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MapView from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 const Mapa = (props) => {
+  const [mapReady, setMapReady] = useState(false);
   const _map = React.useRef(null);
 
+
   useEffect(() => {
-    _map.current.animateToRegion(props.ubicacionInicial, 350);
-  });
+    {mapReady &&
+      _map.current.animateToRegion(props.ubicacionInicial, 350);
+      console.log('Effect ')
+    }
+  }, [props.ubicacionInicial]);
 
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
         ref={_map}
         initialRegion={props.ubicacionInicial}
+        onLayout={() => setMapReady(true)}
 
       // animateToCoordinate={this.props.ubicacionInicial}
 

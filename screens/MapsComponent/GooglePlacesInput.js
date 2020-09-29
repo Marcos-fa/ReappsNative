@@ -1,5 +1,5 @@
 import React from 'react';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GooglePlacesAutocomplete, Alert } from 'react-native-google-places-autocomplete';
 import {API_KEY} from '../../datos/MapaKey';
 
 const GooglePlacesInput = (props) => {
@@ -16,6 +16,8 @@ const GooglePlacesInput = (props) => {
         key: API_KEY,
         language: 'es',
       }}
+      //onFail={error => console.error(error)}
+      onFail={error => alert("Es necesario api activar Api Key")}
     />
   );
 };
