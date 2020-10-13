@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { TouchableOpacity, Alert, StatusBar, Dimensions, Animated, FlatList, Text, View, StyleSheet, Linking } from 'react-native';
+import { TouchableOpacity, StatusBar, Dimensions, Animated, Text, View, StyleSheet, Linking } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { color } from 'react-native-reanimated';
 import socialsData from '../datos/socialsData';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';

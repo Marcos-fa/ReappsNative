@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import GooglePlacesInput from './MapsComponent/GooglePlacesInput';
 import Mapa from './MapsComponent/Mapa';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 export default function Maps() {
-    //const _map = React.useRef(null);
     const [region, setRegion] = useState(
         {
             latitude: 19.432806,
@@ -14,10 +12,6 @@ export default function Maps() {
             longitudeDelta: 0.003,
         },
     );
-
-    // useEffect(() => {
-    //     _map.current.animateToRegion(region,350);
-    // });
 
     const getCoordsFromName = async (loc) => {
         updateState({
@@ -35,12 +29,7 @@ export default function Maps() {
         });
     }
 
-    // function onMapRegionChange(region) {
-    //     setRegion(region);
-    // }
-
     return (
-
         <View style={styles.container}>
             <View style={{ flex: 1, flexGrow: 1 }}>
                 <Mapa
@@ -61,9 +50,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-    },
-    mapStyle: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-    },
+    }
 });
