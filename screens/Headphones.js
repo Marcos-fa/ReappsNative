@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Animated, StatusBar, View, Text, StyleSheet, FlatList, ActivityIndicator, Image, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { Animated, StatusBar, View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
 import data from '../datos/dataStore';
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import {FontAwesome5} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 const LOGO_WIDTH = 220;
@@ -50,7 +50,7 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
     );
 }
 
-const Pagination = ({scrollX}) => {
+const Pagination = ({ scrollX }) => {
     const inputRange = [-width, 0, width];
     const translateX = scrollX.interpolate({
         inputRange,
@@ -58,8 +58,8 @@ const Pagination = ({scrollX}) => {
     });
     return (
         <View style={styles.pagination} >
-            <Animated.View 
-            style={[styles.paginationIndicator, {transform:[{translateX}]}]} />
+            <Animated.View
+                style={[styles.paginationIndicator, { transform: [{ translateX }] }]} />
             {data.map((item) => {
                 return (
                     <View key={item.key} style={styles.paginationDotContainer} >
@@ -80,9 +80,9 @@ const Ticker = ({ scrollX }) => {
     })
     return (
         <View style={styles.tickerContainer}>
-            <Animated.View style={{transform: [{translateY}]}} >
-                {data.map(({type}, index) => {
-                    return ( <Text key={index} style={styles.tickerText} > {type} </Text>
+            <Animated.View style={{ transform: [{ translateY }] }} >
+                {data.map(({ type }, index) => {
+                    return (<Text key={index} style={styles.tickerText} > {type} </Text>
                     );
                 })}
             </Animated.View>
@@ -90,11 +90,11 @@ const Ticker = ({ scrollX }) => {
     );
 }
 
-const Circle = ({scrollX}) => {
-    return(
-        <View style={[StyleSheet.absoluteFillObject,styles.circleContainer]} >
-            {data.map(({color}, index) =>{
-                const inputRange = [(index -0.55) * width, index * width, (index +0.55) * width];
+const Circle = ({ scrollX }) => {
+    return (
+        <View style={[StyleSheet.absoluteFillObject, styles.circleContainer]} >
+            {data.map(({ color }, index) => {
+                const inputRange = [(index - 0.55) * width, index * width, (index + 0.55) * width];
                 const scale = scrollX.interpolate({
                     inputRange,
                     outputRange: [0, 1, 0],
@@ -105,7 +105,7 @@ const Circle = ({scrollX}) => {
                     outputRange: [0, 0.2, 0],
                 })
                 return (
-                    <Animated.View key={index} style={[styles.circle, {transform: [{ scale }], backgroundColor: color, opacity,}]} />
+                    <Animated.View key={index} style={[styles.circle, { transform: [{ scale }], backgroundColor: color, opacity, }]} />
                 );
             })}
         </View>
@@ -120,7 +120,6 @@ export default function Headphone() {
 
     return (
         <SafeAreaView style={styles.container} >
-            
             <Circle scrollX={scrollX} />
             <Animated.FlatList
                 horizontal
@@ -134,7 +133,7 @@ export default function Headphone() {
                     { useNativeDriver: true }
                 )}
             />
-            <TouchableOpacity style={styles.burgerMenu} onPress={() => navigation.toggleDrawer() }><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
+            <TouchableOpacity style={styles.burgerMenu} onPress={() => navigation.toggleDrawer()}><FontAwesome5 name='bars' size={24} color="#161924" /></TouchableOpacity>
             <Image source={require('../assets/headphones/ue_black_logo.png')} style={styles.logo} />
             <Pagination scrollX={scrollX} />
             <Ticker scrollX={scrollX} />
@@ -209,13 +208,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    paginationIndicator:{
+    paginationIndicator: {
         width: DOT_SIZE,
         height: DOT_SIZE,
         borderRadius: DOT_SIZE / 2,
         borderWidth: 2,
         borderColor: '#ddd',
-        position:'absolute',
+        position: 'absolute',
     },
     paginationDot: {
         width: DOT_SIZE * 0.3,
@@ -223,33 +222,33 @@ const styles = StyleSheet.create({
         borderRadius: DOT_SIZE * 0.15,
     },
     tickerContainer: {
-        position:'absolute',
-        top:40,
-        left:20,
+        position: 'absolute',
+        top: 40,
+        left: 20,
         overflow: 'hidden',
         height: TICKER_HEIGHT,
     },
-    tickerText:{
+    tickerText: {
         fontSize: TICKER_HEIGHT,
         lineHeight: TICKER_HEIGHT,
         textTransform: 'uppercase',
-        fontWeight:'bold',
+        fontWeight: 'bold',
 
     },
-    circleContainer:{
+    circleContainer: {
         alignItems: 'center',
         justifyContent: 'center',
     },
-    circle:{
+    circle: {
         width: CIRCLE_SIZE,
         height: CIRCLE_SIZE,
         borderRadius: CIRCLE_SIZE / 2,
         position: 'absolute',
         top: '15%',
     },
-    burgerMenu:{
+    burgerMenu: {
         position: 'absolute',
-        top:40,
-        right:20,
+        top: 40,
+        right: 20,
     },
 })

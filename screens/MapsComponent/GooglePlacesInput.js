@@ -12,7 +12,6 @@ const GooglePlacesInput = (props) => {
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
         props.notifyChange(details.geometry.location);
-        //console.log(details.geometry.location);
       }}
       query={{
         key: apiKey,

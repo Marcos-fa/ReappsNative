@@ -6,10 +6,10 @@ const Mapa = (props) => {
   const [mapReady, setMapReady] = useState(false);
   const _map = React.useRef(null);
 
-
   useEffect(() => {
-    {mapReady &&
-      _map.current.animateToRegion(props.ubicacionInicial, 350);
+    {
+      mapReady &&
+        _map.current.animateToRegion(props.ubicacionInicial, 350);
       console.log('Effect ')
     }
   }, [props.ubicacionInicial]);
@@ -20,14 +20,11 @@ const Mapa = (props) => {
         ref={_map}
         initialRegion={props.ubicacionInicial}
         onLayout={() => setMapReady(true)}
-
       // animateToCoordinate={this.props.ubicacionInicial}
-
       //onRegionChangeComplete={(reg) => this.props.onRegionChange(reg)}
       />
     </View>
   );
-
 }
 
 const styles = StyleSheet.create({

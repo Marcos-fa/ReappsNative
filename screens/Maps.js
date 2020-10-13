@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import GooglePlacesInput from './MapsComponent/GooglePlacesInput';
 import Mapa from './MapsComponent/Mapa';
 
@@ -37,7 +37,7 @@ export default function Maps() {
                     ubicacionInicial={region}
                 />
             </View>
-            <View style={{position:'absolute', left:0, right:0}}>
+            <View style={{ position: 'absolute', left: 0, right: 0 }}>
                 <GooglePlacesInput
                     notifyChange={(loc) => getCoordsFromName(loc)}
                 />

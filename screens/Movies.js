@@ -1,24 +1,17 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, StatusBar, FlatList, Image, Dimensions, Animated, TouchableOpacity, Platform } from 'react-native';
-import Constants from 'expo-constants';
 import { FontAwesome5 } from '@expo/vector-icons'
 import { getMovies } from '../datos/Movies/api';
 import Genres from '../datos/Movies/Genres';
 import Rating from '../datos/Movies/Rating';
-import MaskedView from '@react-native-community/masked-view';
 import { useNavigation } from '@react-navigation/native';
-
-import Svg, { Rect } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Extrapolate } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window');
-
 const SPACING = 10;
 const ITEM_SIZE = Platform.IS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const BACKDROP_HEIGHT = height * 0.65;
-const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
 const Loading = () => (
     <View style={styles.loadingContainer}>
@@ -40,7 +33,6 @@ const Backdrop = ({ movies, scrollX }) => {
                 const translateX = scrollX.interpolate({
                     inputRange: [(index - 2) * ITEM_SIZE, (index - 1) * ITEM_SIZE],
                     outputRange: [0, width],
-                    // extrapolate:'clamp'
                 });
                 return (
                     <Animated.View
@@ -78,11 +70,8 @@ export default function Movies() {
     React.useEffect(() => {
         const fetchData = async () => {
             const movies = await getMovies();
-            // Add empty items to create fake space
-            // [empty_item, ...movies, empty_item]
             setMovies([{ key: 'empty-left' }, ...movies, { key: 'empty-right' }]);
         };
-
         if (movies.length === 0) {
             fetchData(movies);
         }
@@ -125,7 +114,6 @@ export default function Movies() {
                         outputRange: [100, 50, 100],
                         extrapolate: 'clamp',
                     });
-
                     return (
                         <View style={{ width: ITEM_SIZE }} >
                             <Animated.View style={{
@@ -146,12 +134,9 @@ export default function Movies() {
                                 <Genres genres={item.genres} />
                                 <Text style={{ fontSize: 12 }} numberOfLines={3} > {item.description} </Text>
                             </Animated.View>
-
                         </View>
                     );
-
                 }}
-
             />
             <TouchableOpacity style={styles.bugerMenu} onPress={() => navigation.toggleDrawer()} ><FontAwesome5 name='bars' size={24} color='#161924' /></TouchableOpacity>
         </View>
@@ -161,7 +146,7 @@ export default function Movies() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'white',
+        backgroundColor: 'white',
     },
     loadingContainer: {
         flex: 1,

@@ -24,8 +24,6 @@ export default class ChatScreen extends Component {
     );
   }
 
-
-
   componentWillUnmount() {
     Fire.off();
   }

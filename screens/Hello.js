@@ -11,7 +11,6 @@ export default function Hello() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

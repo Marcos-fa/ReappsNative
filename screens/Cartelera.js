@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator, ImageBackground, Image, TouchableOpacity, Linking } from 'react-native';
-import { Component } from 'react';
 import { Transition, Transitioning } from 'react-native-reanimated';
 
 const transition = (
@@ -13,7 +12,9 @@ const transition = (
 
 export default function Cartelera() {
     const ref = React.useRef();
-
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState({});
+    const [currentId, setCurrentid] = useState(null);
     const DATA = [
 
         {
@@ -54,10 +55,6 @@ export default function Cartelera() {
 
     ];
 
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState({});
-    const [currentId, setCurrentid] = useState(null);
-
     useEffect(() => {
         fetch('https://reactnative.dev/movies.json')
             .then((response) => response.json())
@@ -70,7 +67,6 @@ export default function Cartelera() {
 
 
     const renderItem = ({ item }) => {
-
         return (
             <TouchableOpacity
                 style={styles.cardContainer}
@@ -80,27 +76,25 @@ export default function Cartelera() {
                 }}
                 activeOpacity={0.9}>
                 <View style={styles.card}>
-                <View style={styles.cardtop}>
-                    <ImageBackground style={styles.cardImageBackground}>
-                        <Image style={styles.cardImage} source={{ uri: item.poster }} />
-                    </ImageBackground>
-                    <View style={styles.cardRight} >
-                        <Text style={{ fontWeight: 'bold' }} >Nombre:</Text>
-                        <Text>{item.title},{item.releaseYear}</Text>
+                    <View style={styles.cardtop}>
+                        <ImageBackground style={styles.cardImageBackground}>
+                            <Image style={styles.cardImage} source={{ uri: item.poster }} />
+                        </ImageBackground>
+                        <View style={styles.cardRight} >
+                            <Text style={{ fontWeight: 'bold' }} >Nombre:</Text>
+                            <Text>{item.title},{item.releaseYear}</Text>
+                        </View>
                     </View>
+                    {item.id === currentId && (
+                        <View style={styles.cardButton} >
+                            <TouchableOpacity style={styles.cardButton} onPress={() => Linking.openURL(item.trailer)} >
+                                <Text style={styles.button} >Trailer</Text>
+                            </TouchableOpacity>
+                        </View>
+                    )}
                 </View>
-                {item.id === currentId && (
-                    <View style={styles.cardButton} >
-                        <TouchableOpacity style={styles.cardButton} onPress={() => Linking.openURL(item.trailer)} >
-                            <Text style={styles.button} >Trailer</Text>
-                        </TouchableOpacity>
-                    </View>
-                )}
-                </View>
-
             </TouchableOpacity>
         );
-
     }
 
 
@@ -125,11 +119,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
-        paddingTop:10,
+        paddingTop: 10,
     },
-    cardContainer:{
-        marginHorizontal:10,
-        flexGrow:1
+    cardContainer: {
+        marginHorizontal: 10,
+        flexGrow: 1
     },
     card: {
         flexGrow: 1,
@@ -139,7 +133,7 @@ const styles = StyleSheet.create({
     },
     cardtop: {
         flexDirection: 'row',
-        margin:10,
+        margin: 10,
     },
     cardLeft: {
         flex: 1,
@@ -166,7 +160,7 @@ const styles = StyleSheet.create({
     },
     cardButton: {
         paddingTop: 5,
-        paddingBottom:10,
+        paddingBottom: 10,
     },
     button: {
         alignSelf: 'center',

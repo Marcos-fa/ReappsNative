@@ -14,8 +14,7 @@ const transition = (
 export default function Directorio() {
     const ref = React.useRef();
     const [currentIndex, setCurrentIndex] = useState(null);
-     const [isLoading, setLoading] = useState(true);
-    // const [papa, setPapa] = useState({});
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://reactnative.dev/movies.json')
@@ -25,7 +24,6 @@ export default function Directorio() {
     }, []);
 
     const renderItem = ({ item }) => {
-        //05b9b5
         return (
             <TouchableOpacity
                 style={styles.cardContainer}
@@ -67,7 +65,7 @@ export default function Directorio() {
                             </TouchableOpacity>
                         </View>
                     )}
-                    {item.id != currentIndex &&(<Text style={{color:'gray', alignSelf:'flex-end', bottom:10, right:10, fontSize:13}} >Presiona para mas información</Text>)}
+                    {item.id != currentIndex && (<Text style={{ color: 'gray', alignSelf: 'flex-end', bottom: 10, right: 10, fontSize: 13 }} >Presiona para mas información</Text>)}
                 </View>
 
             </TouchableOpacity>
@@ -90,13 +88,13 @@ export default function Directorio() {
         <Transitioning.View
             ref={ref}
             transition={transition}>
-                 {isLoading ? <ActivityIndicator /> : (
-            <FlatList
-                data={data}
-                keyExtractor={({ id }, index) => id}
-                renderItem={renderItem}
-            />
-                 )}
+            {isLoading ? <ActivityIndicator /> : (
+                <FlatList
+                    data={data}
+                    keyExtractor={({ id }, index) => id}
+                    renderItem={renderItem}
+                />
+            )}
         </Transitioning.View>
     );
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Dimensions } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get('window');
@@ -26,9 +25,8 @@ export default class LoginScreen extends Component {
               this.setState({ name });
             }}
             value={this.state.name} />
-
           <View style={{ alignItems: 'flex-end', marginTop: 64 }}>
-            <TouchableOpacity style={styles.continue} onPress={() => this.props.navigation.navigate('Chat', {name: this.state.name})}>
+            <TouchableOpacity style={styles.continue} onPress={() => this.props.navigation.navigate('Chat', { name: this.state.name })}>
               <Ionicons name="md-arrow-round-forward" size={24} color='#fff' />
             </TouchableOpacity>
           </View>
@@ -44,9 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4F5F7',
   },
   circle: {
-    width: width*2,
-    height: width*2.5,
-    borderRadius: width*2 / 2,
+    width: width * 2,
+    height: width * 2.5,
+    borderRadius: width * 2 / 2,
     backgroundColor: '#fff',
     position: 'absolute',
     left: -(width),
