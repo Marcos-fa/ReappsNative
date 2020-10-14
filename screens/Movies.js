@@ -154,6 +154,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     bugerMenu: {
+        backgroundColor:'#fff',
+        width:50,
+        height:50,
+        borderRadius:25,
+        alignItems:'center',
+        justifyContent:'center',
         position: 'absolute',
         top: 40,
         right: 20,
