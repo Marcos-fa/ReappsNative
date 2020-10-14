@@ -20,9 +20,9 @@ const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={HomeHeaderStyle}>
+        <Stack.Navigator screenOptions={{...screenOptionStyle, headerStyle: {  backgroundColor: "#984B3B", }, headerTintColor: "white",  }}>
             <Stack.Screen name='Home' component={HomeScreen}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer  color={'white'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -32,7 +32,7 @@ const request_ImgPicker = () => {
         <Stack.Navigator
             screenOptions={screenOptionStyle}>
             <Stack.Screen name='Request y ImgPicker' component={Request_ImgPicker}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -41,7 +41,7 @@ const cartelera = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle} >
             <Stack.Screen name='Cartelera' component={Cartelera}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -50,7 +50,7 @@ const headphones = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }} >
             <Stack.Screen name='Headphones' component={Headphones}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -59,7 +59,7 @@ const movies = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }} >
             <Stack.Screen name='Movies' component={Movies}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -68,7 +68,7 @@ const socials = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }} >
             <Stack.Screen name='Socials' component={Socials}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -77,7 +77,7 @@ const directorio = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle} >
             <Stack.Screen name='Directorio' component={Directorio}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -86,7 +86,7 @@ const maps = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle} >
             <Stack.Screen name='Maps' component={Maps}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -94,9 +94,9 @@ const loginScreen = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle} >
             <Stack.Screen name='Login' component={LoginScreen}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
             <Stack.Screen name='Chat' component={ChatApp}
-                options={() => ({ headerLeft: () => <OpenDrawer /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -124,9 +124,7 @@ const HomeHeaderStyle = {
     },
     titleStyle: {
     },
-    headerStyle: {
-        backgroundColor: "#984B3B",
-    },
+    headerStyle: {  backgroundColor: "#984B3B", },
     headerTintColor: "white",
     headerBackTitle: "Back",
     headerLeftContainerStyle: { paddingLeft: 10 },
