@@ -15,14 +15,19 @@ import Maps from '../screens/Maps';
 import ChatApp from "../screens/ChatApp/ChatScreen";
 import LoginScreen from "../screens/ChatApp/LoginScreen";
 
+import { LoginWelcome } from "../screens/LoginApp/LoginWelcome";
+import { SignIn } from '../screens/LoginApp/Signin';
+import { SignUp } from "../screens/LoginApp/SignUp";
+import { Home } from "../screens/LoginApp/Home";
+
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={{...screenOptionStyle, headerStyle: {  backgroundColor: "#984B3B", }, headerTintColor: "white",  }}>
+        <Stack.Navigator screenOptions={{ ...screenOptionStyle, headerStyle: { backgroundColor: "#984B3B", }, headerTintColor: "white", }}>
             <Stack.Screen name='Home' component={HomeScreen}
-                options={() => ({ headerLeft: () => <OpenDrawer  color={'white'} /> })} />
+                options={() => ({ headerLeft: () => <OpenDrawer color={'white'} /> })} />
         </Stack.Navigator>
     );
 }
@@ -100,8 +105,22 @@ const loginScreen = () => {
         </Stack.Navigator>
     );
 }
+const loginApp = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle} >
+            <Stack.Screen screenOptions={{ headerShown: false }} name='LoginApp' component={LoginWelcome}
+                options={() => ({ headerShown: false, headerLeft: () => <OpenDrawer color={'black'} /> })} />
+            <Stack.Screen name='Sign In' component={SignIn}
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
+            <Stack.Screen name='Sign Up' component={SignUp}
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
+            <Stack.Screen name='Home' component={Home}
+                options={() => ({ headerLeft: () => <OpenDrawer color={'black'} /> })} />
+        </Stack.Navigator>
+    );
+}
 
-export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen };
+export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen, loginApp };
 
 const screenOptionStyle = {
     headerTitleStyle: {
@@ -113,19 +132,6 @@ const screenOptionStyle = {
         backgroundColor: "#fff",
     },
     headerTintColor: "black",
-    headerBackTitle: "Back",
-    headerLeftContainerStyle: { paddingLeft: 10 },
-    headerRight: () => <Text style={{ color: '#9AC4F8' }} > </Text>
-};
-
-const HomeHeaderStyle = {
-    headerTitleStyle: {
-        alignSelf: 'center',
-    },
-    titleStyle: {
-    },
-    headerStyle: {  backgroundColor: "#984B3B", },
-    headerTintColor: "white",
     headerBackTitle: "Back",
     headerLeftContainerStyle: { paddingLeft: 10 },
     headerRight: () => <Text style={{ color: '#9AC4F8' }} > </Text>
