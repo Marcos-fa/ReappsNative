@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Animated, StatusBar, View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { Animated, StatusBar, View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, Dimensions, Linking } from 'react-native';
 import data from '../datos/dataStore';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import CreditsStyles from "../Styles/CreditsStyles";
 
 const { width, height } = Dimensions.get('window');
 const LOGO_WIDTH = 220;
@@ -137,6 +138,7 @@ export default function Headphone() {
             <Image source={require('../assets/headphones/ue_black_logo.png')} style={styles.logo} />
             <Pagination scrollX={scrollX} />
             <Ticker scrollX={scrollX} />
+            <TouchableOpacity style={{position:'absolute', padding: 3, borderRadius: 25, bottom: 40, left: 72, borderWidth: 2, borderColor: '#ddd'}} onPress={() => Linking.openURL('https://youtu.be/cGTD4yYgEHc') } ><Text style={{...styles.tickerText, fontSize: 25}} >Credits</Text></TouchableOpacity>
         </SafeAreaView>
     );
 }

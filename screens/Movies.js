@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, StatusBar, FlatList, Image, Dimensions, Animated, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, FlatList, Image, Dimensions, Animated, TouchableOpacity, Platform, Linking } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'
 import { getMovies } from '../datos/Movies/api';
 import Genres from '../datos/Movies/Genres';
 import Rating from '../datos/Movies/Rating';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import CreditsStyles from "../Styles/CreditsStyles";
+import BurgerMenuStyle from "../Styles/BurgerMenuStyle";
 
 const { width, height } = Dimensions.get('window');
 const SPACING = 10;
@@ -138,7 +140,8 @@ export default function Movies() {
                     );
                 }}
             />
-            <TouchableOpacity style={styles.bugerMenu} onPress={() => navigation.toggleDrawer()} ><FontAwesome5 name='bars' size={24} color='#161924' /></TouchableOpacity>
+            <TouchableOpacity style={BurgerMenuStyle.burgerMenu} onPress={() => navigation.toggleDrawer()} ><FontAwesome5 name='bars' size={24} color='#161924' /></TouchableOpacity>
+            <TouchableOpacity style={{...CreditsStyles.creditsButton, top: 30, right: 80, left: 80,}} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=yV-2HRzNX9o&t=2s') } ><Text style={{fontSize: 20, fontWeight: 'bold', letterSpacing: 4, }} >CREDITS</Text></TouchableOpacity>
         </View>
     );
 }
@@ -152,17 +155,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    bugerMenu: {
-        backgroundColor:'#fff',
-        width:50,
-        height:50,
-        borderRadius:25,
-        alignItems:'center',
-        justifyContent:'center',
-        position: 'absolute',
-        top: 40,
-        right: 20,
     },
     posterImage: {
         width: '100%',

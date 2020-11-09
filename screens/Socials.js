@@ -4,6 +4,8 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import socialsData from '../datos/socialsData';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import CreditsStyles from "../Styles/CreditsStyles";
+import { color } from 'react-native-reanimated';
 
 const ICON_SIZE = 42;
 const ITEM_HEIGHT = ICON_SIZE * 2;
@@ -158,6 +160,7 @@ export default function Socials() {
             }} />
             <ConnectButton onPress={onConnectPress} />
             <TouchableOpacity style={styles.burgerMenu} onPress={() => navigation.toggleDrawer()}><FontAwesome5 name='bars' size={24} color={colors.yellow} /></TouchableOpacity>
+            <TouchableOpacity style={{...CreditsStyles.creditsButton, backgroundColor: colors.yellow, top: 30, right: 80, left: 80}} onPress={() => Linking.openURL('https://youtu.be/frNf5VMGjsk') } ><Text style={{fontSize: 20, fontWeight: 'bold', letterSpacing: 4, }} >CREDITS</Text></TouchableOpacity>
         </View>
     );
 }
