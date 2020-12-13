@@ -17,10 +17,8 @@ export default function Directorio() {
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://reactnative.dev/movies.json')
-            .then((response) => response.json())
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false));
+        setLoading(true)
+        setLoading(false);
     }, []);
 
     const renderItem = ({ item }) => {

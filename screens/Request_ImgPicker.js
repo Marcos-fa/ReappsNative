@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Request() {
     const [isLoading, setLoading] = useState(true);
@@ -33,7 +34,7 @@ export default function Request() {
     const _pickImage = async () => {
         try {
             let result = await ImagePicker.launchImageLibraryAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
                 allowsEditing: true,
                 aspect: [4, 3],
                 quality: 1,
@@ -51,7 +52,7 @@ export default function Request() {
     return (
         <View style={styles.container}>
             <View style={styles.request} >
-                <Text style={{ fontSize: 40, textAlign:'center' }} >Request View</Text>
+                <Text style={{ fontSize: 40, textAlign: 'center' }} >Request View</Text>
                 {isLoading ? <ActivityIndicator /> : (
                     <FlatList
                         data={data}
@@ -63,9 +64,10 @@ export default function Request() {
                 )}
             </View>
             <View style={styles.imageContainer}>
-                <Button title='Pick an image from camera roll' onPress={() => _pickImage()} />
-                {image && <Image style={styles.image} source={{ uri: image }} />}
-                {/* <Button title='Image Picker' onPress={() => this.OpenImagePicker()} />  */}
+                <TouchableOpacity onPress={() => _pickImage()} style={{ backgroundColor: 'white', borderRadius: 20, width:240, alignSelf:'center', margin:10}}>
+                    <Text style={{padding:10, textAlign: 'center'}}> Touch to pick up a photo </Text>
+                </TouchableOpacity >
+                    {image && <Image style={styles.image} source={{ uri: image }} />}
             </View>
 
         </View>
@@ -80,14 +82,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'center',
     },
-    request:{
-      flex:1,  
-    },
-    imageContainer: {
-        backgroundColor: 'gray',
+    request: {
         flex: 1,
     },
-    image:{
+    imageContainer: {
+        flex: 1,
+        backgroundColor:'gray'
+    },
+    image: {
         width: '100%',
         height: '100%',
     }

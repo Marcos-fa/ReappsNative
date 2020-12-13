@@ -5,13 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <StatusBar style='auto' hidden />
-      <TouchableOpacity style={{width:'100%', height:'100%'}} onPress={() => navigation.toggleDrawer()}>
+      <TouchableOpacity style={{ width: '100%', height: '100%' }} onPress={() => navigation.toggleDrawer()}>
         <Image style={styles.image} source={require('../assets/Welcome.jpg')} />
       </TouchableOpacity>
-      
+
     </View>
   );
 }
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: '100%', 
+    width: '100%',
     height: '100%',
   },
 });
