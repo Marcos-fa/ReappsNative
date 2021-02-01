@@ -11,6 +11,8 @@
     "@codler/react-native-keyboard-aware-scroll-view": "^1.0.1",
     "@react-native-community/async-storage": "~1.12.0",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-community/progress-bar-android": "^1.0.4",
+    "@react-native-community/progress-view": "^1.2.3",
     "@react-navigation/drawer": "^5.9.0",
     "@react-navigation/material-bottom-tabs": "^5.3.9",
     "@react-navigation/native": "^5.7.3",
@@ -31,11 +33,13 @@
     "react-native-google-places-autocomplete": "^1.8.2",
     "react-native-maps": "0.27.1",
     "react-native-paper": "^4.3.1",
+    "react-native-pdf": "^6.2.2",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-svg": "12.1.0",
-    "react-native-web": "~0.13.7"
+    "react-native-web": "~0.13.7",
+    "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

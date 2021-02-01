@@ -10,8 +10,6 @@ export default function Request() {
     const [data, setData] = useState({});
     const [image, setImage] = useState(null);
 
-
-
     const getPermissionAsync = async () => {
         if (Platform.OS !== 'web') {
             const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -29,7 +27,6 @@ export default function Request() {
             .catch((error) => console.error(error))
             .finally(() => setLoading(false));
     }, []);
-
 
     const _pickImage = async () => {
         try {

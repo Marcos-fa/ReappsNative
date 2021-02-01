@@ -8,12 +8,12 @@ const DrawerNavigator = () => {
     return (
         <Drawer.Navigator initialRouteName='Home' drawerContent={props => <DrawerContentStyle {...props} />}>
             <Drawer.Screen name="Home" component={MainStackNavigator} />
-            <Drawer.Screen name="Request Y ImgPicker" component={request_ImgPicker} />
-            <Drawer.Screen name='Cartelera' component={cartelera} />
+            {/* <Drawer.Screen name="Request Y ImgPicker" component={request_ImgPicker} /> */}
+            <Drawer.Screen name='Peliculas' component={cartelera} />
             <Drawer.Screen name='Directorio' component={directorio} />
-            <Drawer.Screen name='Headphones' component={headphones} />
-            <Drawer.Screen name='Movies' component={movies} />
-            <Drawer.Screen name='Socials' component={socials} />
+            <Drawer.Screen name='Audifonos' component={headphones} />
+            <Drawer.Screen name='Peliculas v2' component={movies} />
+            <Drawer.Screen name='Social' component={socials} />
             <Drawer.Screen name='Maps' component={maps} />
             <Drawer.Screen name='Chat' component={loginScreen} />
             <Drawer.Screen name='Login' component={loginApp} />
