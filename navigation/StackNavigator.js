@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import OpenDrawer from "./OpenDrawer";
 // Screens
 import Request_ImgPicker from '../screens/Request_ImgPicker';
-import HomeScreen from '../screens/Welcome';
+import Welcome from '../screens/Welcome';
 // import Fotos from '../screens/Fotos';
 import Cartelera from '../screens/Cartelera';
 import Headphones from '../screens/Headphones';
@@ -23,10 +23,10 @@ import { Home } from "../screens/LoginApp/Home";
 
 const Stack = createStackNavigator();
 
-const MainStackNavigator = () => {
+const welcome = () => {
     return (
         <Stack.Navigator screenOptions={{ ...screenOptionStyle, headerStyle: { backgroundColor: "#984B3B", }, headerTintColor: "white", }}>
-            <Stack.Screen name='Home' component={HomeScreen}
+            <Stack.Screen name='Home' component={Welcome}
                 options={() => ({ headerLeft: () => <OpenDrawer color={'white'} /> })} />
         </Stack.Navigator>
     );
@@ -120,7 +120,7 @@ const loginApp = () => {
     );
 }
 
-export { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen, loginApp };
+export { welcome, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen, loginApp };
 
 const screenOptionStyle = {
     headerTitleStyle: {

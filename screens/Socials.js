@@ -135,7 +135,7 @@ export default function Socials() {
             if(darkRef?.current){
                 darkRef.current.scrollToOffset({
                     offset: v.value,
-                    Animated: false,
+                    Animated: true,
                 })
             }
         })
@@ -151,13 +151,18 @@ export default function Socials() {
                 onScroll={onScroll}
                 onItemIndexChange={onItemIndexChange}
             />
-            <List ref={darkRef} color={colors.dark} showText style={{
-                position: 'absolute',
-                backgroundColor: colors.yellow,
-                width,
-                height: ITEM_HEIGHT,
-                top: height / 2 - ITEM_HEIGHT / 2,
-            }} />
+            <List 
+                ref={darkRef} 
+                color={colors.dark} 
+                showText 
+                style={{
+                    position: 'absolute',
+                    backgroundColor: colors.yellow,
+                    width,
+                    height: ITEM_HEIGHT,
+                    top: height / 2 - ITEM_HEIGHT / 2,
+                }} 
+            />
             <ConnectButton onPress={onConnectPress} />
             <TouchableOpacity style={styles.burgerMenu} onPress={() => navigation.toggleDrawer()}><FontAwesome5 name='bars' size={24} color={colors.yellow} /></TouchableOpacity>
             <TouchableOpacity style={{...CreditsStyles.creditsButton, backgroundColor: colors.yellow, top: 30, right: 80, left: 80}} onPress={() => Linking.openURL('https://youtu.be/frNf5VMGjsk') } ><Text style={{fontSize: 20, fontWeight: 'bold', letterSpacing: 4, }} >CREDITS</Text></TouchableOpacity>

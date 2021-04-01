@@ -1,13 +1,13 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { MainStackNavigator, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen, loginApp } from "./StackNavigator";
+import { welcome, request_ImgPicker, cartelera, headphones, movies, socials, directorio, maps, loginScreen, loginApp } from "./StackNavigator";
 import DrawerContentStyle from './DrawerContent';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
     return (
         <Drawer.Navigator initialRouteName='Home' drawerContent={props => <DrawerContentStyle {...props} />}>
-            <Drawer.Screen name="Home" component={MainStackNavigator} />
+            <Drawer.Screen name="Home" component={welcome} />
             {/* <Drawer.Screen name="Request Y ImgPicker" component={request_ImgPicker} /> */}
             <Drawer.Screen name='Peliculas' component={cartelera} />
             <Drawer.Screen name='Directorio' component={directorio} />

@@ -33,7 +33,6 @@ export default function Maps() {
         <View style={styles.container}>
             <View style={{ flex: 1, flexGrow: 1 }}>
                 <Mapa
-                    {...console.log(region)}
                     ubicacionInicial={region}
                 />
             </View>

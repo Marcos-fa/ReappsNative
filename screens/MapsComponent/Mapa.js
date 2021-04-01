@@ -10,7 +10,6 @@ const Mapa = (props) => {
     {
       mapReady &&
         _map.current.animateToRegion(props.ubicacionInicial, 350);
-      console.log('Effect ')
     }
   }, [props.ubicacionInicial]);
 
