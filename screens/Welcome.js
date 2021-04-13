@@ -13,10 +13,10 @@ export default function Welcome() {
       <TouchableOpacity style={{ width: '100%', height: '100%' }} onPress={() => navigation.toggleDrawer()}>
         <Image style={styles.image} source={require('../assets/Welcome.jpg')} />
       </TouchableOpacity>
-      <TouchableOpacity style={{ ...CreditsStyles.creditsButton, position: 'absolute', bottom: 30, right: 30 }}
+      {/* <TouchableOpacity style={{ ...CreditsStyles.creditsButton, position: 'absolute', bottom: 30, right: 30 }}
         onPress={() => Linking.openURL('https://create.piktochart.com/output/51495882-marcos-cv-english') } >
         <Text style={{ fontSize: 20, fontWeight: 'bold'}} >My CV</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
     </View>
   );
