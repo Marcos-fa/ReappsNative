@@ -12,7 +12,7 @@ import {
 const { width, height } = Dimensions.get('window');
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import { AppTextinput } from '../../../components';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 var validator = require('email-validator');
 
 export class SignUp extends Component {

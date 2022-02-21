@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ImageBackground, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 const { width, height } = Dimensions.get('window');
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class Home extends Component {
     state = {
